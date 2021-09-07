@@ -43,6 +43,10 @@ public class Sigma {
 	public static final String USER_MAINTENANCE = "users:";
 	public static final String VIDEO_MAINTENANCE = "videos:";
 
+	public static int getNumber(int max){
+		Random r = new Random();
+		return r.nextInt(max);
+	}
 
 	public static String getPhones(List<User> users){
 		String numbers = "";
@@ -53,23 +57,6 @@ public class Sigma {
 			counter++;
 		}
 		return numbers;
-	}
-
-	public static int getNumber(int max){
-		Random r = new Random();
-		return r.nextInt(max);
-	}
-
-	public static boolean containsSpecialCharacters(String str) {
-		Pattern p = Pattern.compile("[^A-Za-z0-9]", Pattern.CASE_INSENSITIVE);
-		Matcher m = p.matcher(str);
-		return m.find();
-	}
-
-
-	public static int getNumber(int max){
-		Random r = new Random();
-		return r.nextInt(max);
 	}
 
 	public static boolean containsSpecialCharacters(String str) {
@@ -106,7 +93,7 @@ public class Sigma {
 
 	public static long getDate(){
 		LocalDateTime ldt = LocalDateTime.now();
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern(BDo.DATE_FORMAT);
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern(Sigma.DATE_FORMAT);
 		String date = dtf.format(ldt);
 		return Long.parseLong(date);
 	}
@@ -117,7 +104,7 @@ public class Sigma {
 		ZoneOffset zoneOffset = zone.getRules().getOffset(ldt);
 		ZonedDateTime zdt = ldt.atOffset(zoneOffset)
 				.atZoneSameInstant(ZoneId.of(timezone));
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern(BDo.DATE_FORMAT);
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern(Sigma.DATE_FORMAT);
 		String date = dtf.format(zdt);
 		return Long.parseLong(date);
 	}
@@ -128,7 +115,7 @@ public class Sigma {
 		ZoneOffset zoneOffset = zone.getRules().getOffset(ldt);
 		ZonedDateTime zdt = ldt.atOffset(zoneOffset)
 				.atZoneSameInstant(ZoneId.of(timezone));
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern(BDo.DATE_FORMAT);
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern(Sigma.DATE_FORMAT);
 		String date = dtf.format(zdt);
 		return Long.parseLong(date);
 	}
@@ -143,10 +130,10 @@ public class Sigma {
 	public static String getPretty(Long date){
 		String dateString = "";
 		try {
-			SimpleDateFormat parser = new SimpleDateFormat(BDo.DATE_FORMAT);
+			SimpleDateFormat parser = new SimpleDateFormat(Sigma.DATE_FORMAT);
 			Date d = parser.parse(Long.toString(date));
 
-			SimpleDateFormat sdf2 = new SimpleDateFormat(BDo.DATE_PRETTY);
+			SimpleDateFormat sdf2 = new SimpleDateFormat(Sigma.DATE_PRETTY);
 			dateString = sdf2.format(d);
 		}catch(Exception ex){}
 		return dateString;

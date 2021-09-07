@@ -4,6 +4,7 @@ public class User {
 	Long id;
 	String uuid;
 	String username;
+	String phone;
 	String password;
 	Long dateJoined;
 
@@ -35,6 +36,14 @@ public class User {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 
 	public String getPassword() {
