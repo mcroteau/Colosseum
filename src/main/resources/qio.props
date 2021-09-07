@@ -1,0 +1,26 @@
+### qio settings ###
+qio.dev=true
+qio.assets=assets
+qio.properties=this
+
+### stripe payments settings ###
+stripe.key=
+
+### database settings ###
+db.url=jdbc:h2:~/.Okay
+db.driver=org.h2.Driver
+db.user=sa
+db.pass=
+
+### sms settings ###
+plivo.api.key=
+plivo.secret.key=
+
+### mail settings ###
+smtp.host=mail.smtp2go.com
+smtp.auth=true
+smtp.port=2525
+smtp.username=
+smtp.password=
+smtp.supportEmail=
+smtp.starttls.enabled=true
