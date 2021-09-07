@@ -36,9 +36,11 @@ public class StartupService {
     public void init() throws Exception {
 
         Chico.configure(access);
+        String password = Chico.dirty(Sigma.SUPER_PASSWORD);
 
         Role superRole = roleRepo.find(Sigma.SUPER_ROLE);
-        Role userRole = roleRepo.find(Sigma.USER_ROLE);
+        Role scholarRole = roleRepo.find(Sigma.SCHOLAR_ROLE);
+        Role professorRole = roleRepo.find(Sigma.PROFESSOR_ROLE);
 
         if(superRole == null){
             superRole = new Role();
@@ -46,76 +48,78 @@ public class StartupService {
             roleRepo.save(superRole);
         }
 
-        if(userRole == null){
-            userRole = new Role();
-            userRole.setName(Sigma.USER_ROLE);
-            roleRepo.save(userRole);
+        if(scholarRole == null){
+            scholarRole = new Role();
+            scholarRole.setName(Sigma.SCHOLAR_ROLE);
+            roleRepo.save(scholarRole);
         }
 
-        User existing = userRepo.getByUsername(Sigma.SUPER_USERNAME);
-        String password = Chico.dirty(Sigma.SUPER_PASSWORD);
+        if(professorRole == null){
+            professorRole = new Role();
+            professorRole.setName(Sigma.PROFESSOR_ROLE);
+            roleRepo.save(professorRole);
+        }
 
-        if(existing == null){
+        User existingSuper = userRepo.get(Sigma.SUPER);
+        if(existingSuper == null){
             User superUser = new User();
-            superUser.setUsername(Sigma.SUPER_USERNAME);
+            superUser.setUsername(Sigma.SUPER);
             superUser.setPassword(password);
             userRepo.saveAdministrator(superUser);
         }
 
+        User existingScholar = userRepo.get(Sigma.SCHOLAR);
+        if(existingScholar == null){
+            User scholar = new User();
+            scholar.setUsername(Sigma.SCHOLAR);
+            scholar.setPassword(password);
+            userRepo.saveAdministrator(scholar);
+        }
 
-        String[] uris = {"http://goioc.xyz",
-                "http://opengreenfield.org"};
-
-        User user = userRepo.getByUsername(Sigma.SUPER_USERNAME);
-        for(int n = 0; n < uris.length; n++){
-            Video video = new Video();
-            video.setName(Sigma.getString(4) + " " + Sigma.getString(6));
-            video.setUri(uris[n]);
-            video.setUserId(user.getId());
-            Video savedVideo = videoRepo.save(video);
-
-            ProjectPhone projectPhone = new ProjectPhone();
-            projectPhone.setPhone("9076879557");
-            projectPhone.setProjectId(savedVideo.getId());
-            videoRepo.addPhone(projectPhone);
+        User existingProfessor = userRepo.get(Sigma.PROFESSOR);
+        if(existingProfessor == null){
+            User professor = new User();
+            professor.setUsername(Sigma.PROFESSOR);
+            professor.setPassword(password);
+            userRepo.saveAdministrator(professor);
         }
 
 
-        try {
-
-            Class[] jobs = { HealthJob.class, HealthJobDos.class, HealthJobTres.class };
-            String[] jobNames = { Sigma.HEALTH_JOB1, Sigma.HEALTH_JOB2, Sigma.HEALTH_JOB3 };
-            String[] triggers = { Sigma.HEALTH1_TRIGGER, Sigma.HEALTH2_TRIGGER, Sigma.HEALTH3_TRIGGER };
-
-
-            for(int n = 0; n < jobs.length; n++){
-
-                JobDetail job = JobBuilder.newJob(jobs[n])
-                        .withIdentity(jobNames[n], Sigma.HEALTH_GROUP).build();
-
-                job.getJobDataMap().put(Sigma.PROJECT_REPO_KEY, videoRepo);
-                job.getJobDataMap().put(Sigma.PHONE_SERVICE_KEY, smsService);
-
-                Trigger trigger = TriggerBuilder
-                        .newTrigger()
-                        .withIdentity(triggers[n], Sigma.HEALTH_GROUP)
-                        .withSchedule(
-                                SimpleScheduleBuilder.simpleSchedule()
-                                        .withIntervalInSeconds(Sigma.HEALTH_JOBS_DURATION).repeatForever())
-                        .build();
-
-                Scheduler scheduler = new StdSchedulerFactory().getScheduler();
-                scheduler.startDelayed(0 );
-                JobKey key = new JobKey(jobNames[n], Sigma.HEALTH_GROUP);
-                if(!scheduler.checkExists(key)) {
-                    scheduler.scheduleJob(job, trigger);
-                    System.out.println(jobs[n] + " repeated " + Sigma.HEALTH_JOBS_DURATION + " seconds");
-                }
-            }
-
-        }catch(Exception e){
-            System.out.println("issue initializing job" + e.getMessage());
-        }
+//        try {
+//
+//            Class[] jobs = { HealthJob.class, HealthJobDos.class, HealthJobTres.class };
+//            String[] jobNames = { Sigma.HEALTH_JOB1, Sigma.HEALTH_JOB2, Sigma.HEALTH_JOB3 };
+//            String[] triggers = { Sigma.HEALTH1_TRIGGER, Sigma.HEALTH2_TRIGGER, Sigma.HEALTH3_TRIGGER };
+//
+//
+//            for(int n = 0; n < jobs.length; n++){
+//
+//                JobDetail job = JobBuilder.newJob(jobs[n])
+//                        .withIdentity(jobNames[n], Sigma.HEALTH_GROUP).build();
+//
+//                job.getJobDataMap().put(Sigma.PROJECT_REPO_KEY, videoRepo);
+//                job.getJobDataMap().put(Sigma.PHONE_SERVICE_KEY, smsService);
+//
+//                Trigger trigger = TriggerBuilder
+//                        .newTrigger()
+//                        .withIdentity(triggers[n], Sigma.HEALTH_GROUP)
+//                        .withSchedule(
+//                                SimpleScheduleBuilder.simpleSchedule()
+//                                        .withIntervalInSeconds(Sigma.HEALTH_JOBS_DURATION).repeatForever())
+//                        .build();
+//
+//                Scheduler scheduler = new StdSchedulerFactory().getScheduler();
+//                scheduler.startDelayed(0 );
+//                JobKey key = new JobKey(jobNames[n], Sigma.HEALTH_GROUP);
+//                if(!scheduler.checkExists(key)) {
+//                    scheduler.scheduleJob(job, trigger);
+//                    System.out.println(jobs[n] + " repeated " + Sigma.HEALTH_JOBS_DURATION + " seconds");
+//                }
+//            }
+//
+//        }catch(Exception e){
+//            System.out.println("issue initializing job" + e.getMessage());
+//        }
 
     }
 

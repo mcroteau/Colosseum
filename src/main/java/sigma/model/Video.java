@@ -11,7 +11,7 @@ public class Video {
     String status;
     Long startTime;
     Long endTime;
-    List<VideoUser> videoUsers;
+    List<VideoAttendant> videoAttendants;
 
     public long getId() {
         return id;
@@ -73,11 +73,11 @@ public class Video {
         this.endTime = endTime;
     }
 
-    public List<VideoUser> getVideoUsers() {
-        return videoUsers;
+    public List<VideoAttendant> getVideoUsers() {
+        return videoAttendants;
     }
 
-    public void setVideoUsers(List<VideoUser> videoUsers) {
-        this.videoUsers = videoUsers;
+    public void setVideoUsers(List<VideoAttendant> videoAttendants) {
+        this.videoAttendants = videoAttendants;
     }
 }

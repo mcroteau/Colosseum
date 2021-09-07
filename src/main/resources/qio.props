@@ -7,7 +7,7 @@ qio.properties=this
 stripe.key=
 
 ### database settings ###
-db.url=jdbc:h2:~/.Okay
+db.url=jdbc:h2:~/.Auditorium
 db.driver=org.h2.Driver
 db.user=sa
 db.pass=
@@ -24,3 +24,7 @@ smtp.username=
 smtp.password=
 smtp.supportEmail=
 smtp.starttls.enabled=true
+
+### auditorium settings ###
+auditorium.commission=8
+

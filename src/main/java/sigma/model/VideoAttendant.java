@@ -1,6 +1,6 @@
 package sigma.model;
 
-public class VideoUser {
+public class VideoAttendant {
     Long userId;
     Long videoId;
     Long timeJoined;

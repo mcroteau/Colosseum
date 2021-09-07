@@ -154,11 +154,11 @@ public class UserService {
 
             user.setUsername(username);
             user.setPassword(passwordHashed);
-            user.setDateCreated(Sigma.getDate());
+            user.setDateJoined(Sigma.getDate());
             userRepo.save(user);
 
             User savedUser = userRepo.getByUsername(user.getUsername());
-            Role defaultRole = roleRepo.find(Sigma.USER_ROLE);
+            Role defaultRole = roleRepo.find(Sigma.PUPIL_ROLE);
 
             userRepo.saveUserRole(savedUser.getId(), defaultRole.getId());
             String permission = getPermission(Long.toString(savedUser.getId()));

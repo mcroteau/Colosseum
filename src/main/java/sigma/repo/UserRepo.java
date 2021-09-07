@@ -1,10 +1,10 @@
 package sigma.repo;
 
+import sigma.Sigma;
 import sigma.model.Role;
 import sigma.model.User;
 import sigma.model.UserPermission;
 import sigma.model.UserRole;
-import sigma.support.Okay;
 import qio.annotate.DataStore;
 import qio.annotate.Inject;
 import qio.Qio;
@@ -38,7 +38,7 @@ public class UserRepo {
 		return user;
 	}
 
-	public User getByUsername(String username) {
+	public User get(String username) {
 		User user = null;
 		try{
 			String sql = "select * from users where username = '[+]'";
@@ -127,7 +127,7 @@ public class UserRepo {
 	}
 
 	public String getUserPassword(String username) {
-		User user = getByUsername(username);
+		User user = get(username);
 		return user.getPassword();
 	}
 
@@ -141,7 +141,7 @@ public class UserRepo {
 	}
 
 	public boolean checkSaveDefaultUserRole(long userId){
-		Role role = roleRepo.find(Sigma.USER_ROLE);
+		Role role = roleRepo.find(Sigma.SCHOLAR_ROLE);
 		UserRole existing = getUserRole(userId, role.getId());
 		if(existing == null){
 			saveUserRole(userId, role.getId());

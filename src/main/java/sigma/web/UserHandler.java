@@ -11,7 +11,7 @@ import qio.model.web.ResponseData;
 
 
 @HttpHandler
-public class UserController {
+public class UserHandler {
 
 	@Inject
 	UserService userService;

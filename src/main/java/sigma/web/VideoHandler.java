@@ -11,7 +11,7 @@ import qio.annotate.verbs.Post;
 import qio.model.web.ResponseData;
 
 @HttpHandler
-public class ProjectController {
+public class VideoHandler {
 
     Gson gson = new Gson();
 
@@ -48,10 +48,11 @@ public class ProjectController {
         return videoService.getEdit(id, data);
     }
 
-    @Post("/project/update")
+    @Post("/project/update/{{id}}")
     protected String update(HttpServletRequest req,
-                            ResponseData data){
-        return videoService.update(data, req);
+                            ResponseData data,
+                            @Variable Long id){
+        return videoService.update(id, data, req);
     }
 
     @Post("/project/delete/{{id}}")

@@ -7,7 +7,7 @@ import qio.annotate.verbs.Get;
 import qio.model.web.ResponseData;
 
 @HttpHandler
-public class BasicController {
+public class BasicHandler {
 
 	@Inject
 	AuthService authService;

@@ -18,11 +18,13 @@ import java.util.regex.Pattern;
 
 public class Sigma {
 
-	public static final String SUPER_USERNAME = "croteau.mike@gmail.com";
 	public static final String SUPER_PASSWORD = "password";
+	public static final String SCHOLAR = "croteau.mike+scholar@gmail.com";
+	public static final String PROFESSOR = "croteau.mike+professor@gmail.com";
+	public static final String SUPER = "croteau.mike@gmail.com";
 
 	public static final String SUPER_ROLE  = "SUPER_ROLE";
-	public static final String PUPIL_ROLE  = "PUPIL_ROLE";
+	public static final String SCHOLAR_ROLE  = "SCHOLAR_ROLE";
 	public static final String PROFESSOR_ROLE   = "PROFESSOR_ROLE";
 
 	public static final String DATE_TIME = "yyyyMMddHHmm";
