@@ -16,7 +16,7 @@ public class AuthService {
     private UserRepo userRepo;
 
     public boolean signin(String username, String password){
-        User user = userRepo.getByUsername(username);
+        User user = userRepo.get(username);
         if(user == null) {
             return false;
         }
@@ -45,7 +45,7 @@ public class AuthService {
 
     public User getUser(){
         String username = Chico.getUser();
-        User user = userRepo.getByUsername(username);
+        User user = userRepo.get(username);
         return user;
     }
 
@@ -59,7 +59,7 @@ public class AuthService {
                 return "[redirect]/signin";
             }
 
-            User authdUser = userRepo.getByUsername(username);
+            User authdUser = userRepo.get(username);
 
             req.getSession().setAttribute("username", authdUser.getUsername());
             req.getSession().setAttribute("userId", authdUser.getId());

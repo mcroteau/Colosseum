@@ -25,8 +25,8 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 
-	<video-config>
+	<session-config>
 		<tracking-mode>COOKIE</tracking-mode>
-	</video-config>
+	</session-config>
 
 </web-app>

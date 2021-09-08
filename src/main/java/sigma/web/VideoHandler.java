@@ -61,42 +61,4 @@ public class VideoHandler {
         return videoService.delete(id, data);
     }
 
-    @Get("/project/phone/add/{{id}}")
-    public String addPhoneView(ResponseData data,
-                               @Variable Long id){
-        return videoService.addPhone(id, data);
-    }
-
-    @Post("/project/phone/add/{{id}}")
-    protected String addPhone(HttpServletRequest req,
-                              ResponseData data,
-                              @Variable Long id){
-        return videoService.addPhone(id, data, req);
-    }
-
-    @Post("/project/phone/delete/{{id}}")
-    protected String deletePhone(ResponseData data,
-                                 @Variable Long id){
-        return videoService.deletePhone(id, data);
-    }
-
-    @Get("/project/email/add/{{id}}")
-    public String addEmailView(ResponseData data,
-                               @Variable Long id){
-        return videoService.addEmail(id, data);
-    }
-
-    @Post("/project/email/add/{{id}}")
-    protected String addEmail(HttpServletRequest req,
-                              ResponseData data,
-                              @Variable Long id){
-        return videoService.addEmail(id, data, req);
-    }
-
-    @Post("/project/email/delete/{{id}}")
-    protected String deleteEmail(ResponseData data,
-                                 @Variable Long id){
-        return videoService.deleteEmail(id, data);
-    }
-
 }

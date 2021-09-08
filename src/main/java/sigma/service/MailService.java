@@ -12,9 +12,6 @@ import java.util.Properties;
 @Service
 public class MailService extends Thread {
 
-    @Property("business")
-    String business;
-
     @Property("smtp.host")
     String host;
 
@@ -67,7 +64,7 @@ public class MailService extends Thread {
         try {
 
             Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress(fromAddress, business));
+            message.setFrom(new InternetAddress(fromAddress, "E=mc² Auditorium"));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toAddress));
             message.setSubject(subject);
             ((MimeMessage) message).setText(emailBody, "utf-8", "html");

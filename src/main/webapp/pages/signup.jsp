@@ -1,6 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib uri="http://www.opensymphony.com/sitemesh/decorator" prefix="decorator" %>
-<%@ taglib prefix="parakeet" uri="/META-INF/tags/parakeet.tld"%>
 
 <div id="signup-form-container">
 
@@ -13,7 +11,7 @@
     </p>
 
 
-    <form action="${pageContext.request.contextPath}/register" method="post" id="registration-form">
+    <form action="${pageContext.request.contextPath}/register" method="post" id="signup-form">
         <fieldset style="text-align: left">
 
             <h2 style="margin-bottom:20px;">Signup</h2>
@@ -40,7 +38,7 @@
 <script>
 
     var processing = false
-    var form = document.getElementById("registration-form");
+    var form = document.getElementById("signup-form");
     var button = document.getElementById("signup-button");
 
     button.addEventListener("click", function(event){

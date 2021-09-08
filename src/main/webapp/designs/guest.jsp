@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>Okay! Website Monitoring</title>
+    <title>E=mc&sup2;  Auditorium! : A colosseum based approach to learning.</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -16,13 +16,15 @@
 <div id="outer-wrapper">
 
     <div id="header-wrapper">
-        <a href="${pageContext.request.contextPath}" class="logo logo-basic">Okay<span class="apostrophe">&check;</span>
-            <span id="tagline">Http Monitoring</span>
+        <a href="${pageContext.request.contextPath}" class="logo logo-basic">
+            <span class="eequals">E = mc&sup2;</span>
+            Auditorium
+            <span id="tagline">Community Education</span>
         </a>
 
         <div id="navigation">
             <a href="${pageContext.request.contextPath}/pricing" class="href-dotted">Pricing</a>
-            <a href="${pageContext.request.contextPath}/signin" class="href-dotted">Signin</a>
+            <a href="${pageContext.request.contextPath}/signup" class="href-dotted">Signup!</a>
         </div>
         <br class="clear"/>
     </div>
@@ -32,7 +34,7 @@
     </div>
 
     <div id="footer-wrapper">
-        &copy; 2021 Okay&check;
+        &copy; 2021 Auditorium
     </div>
 
     <style>

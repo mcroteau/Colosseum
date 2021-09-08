@@ -20,13 +20,13 @@ public class Access implements DbSecurityAccess {
     }
 
     public Set<String> getRoles(String username){
-        User user = userRepo.getByUsername(username);
+        User user = userRepo.get(username);
         Set<String> roles = userRepo.getUserRoles(user.getId());
         return roles;
     }
 
     public Set<String> getPermissions(String username){
-        User user = userRepo.getByUsername(username);
+        User user = userRepo.get(username);
         Set<String> permissions = userRepo.getUserPermissions(user.getId());
         return permissions;
     }

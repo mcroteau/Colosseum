@@ -48,7 +48,7 @@ public class VideoRepo {
         String sql = "insert into video_sessions (key, name, start_time) values ('[+]', '[+]', '[+]', [+])";
         qio.save(sql, new Object[] {
                 video.getKey(),
-                video.getName(),
+                video.getTitle(),
                 video.getStartTime()
         });
         return true;
@@ -56,9 +56,9 @@ public class VideoRepo {
 
 
     public boolean update(Video video){
-        String sql = "update video_sessions set name = '[+]', end_time = [+], status = '[+]' where id = [+]";
+        String sql = "update video_sessions set title = '[+]', end_time = [+], status = '[+]' where id = [+]";
         qio.update(sql, new Object[] {
-                video.getName(),
+                video.getTitle(),
                 video.getEndTime(),
                 video.getStatus(),
                 video.getId()

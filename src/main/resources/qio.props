@@ -23,7 +23,7 @@ smtp.port=2525
 smtp.username=
 smtp.password=
 smtp.supportEmail=
-smtp.starttls.enabled=true
+smtp.starttls=true
 
 ### auditorium settings ###
 auditorium.commission=8

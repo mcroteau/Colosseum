@@ -33,8 +33,8 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
     line-height: 1;
-    background: rgb(255,253,180);
-    background: linear-gradient(180deg, rgba(255,253,180,1) 0%, rgba(255,255,255,1) 100%);
+    /*background: rgb(255,253,180);*/
+    /*background: linear-gradient(180deg, rgba(255,253,180,1) 0%, rgba(255,255,255,1) 100%);*/
 }
 ol, ul {
     list-style: none;
@@ -69,7 +69,7 @@ td{
 }
 
 p, span{
-    font-family: "Roboto Slab" !important;
+    font-family: "Roboto" !important;
     line-height: 1.3em;
 }
 
@@ -324,17 +324,17 @@ input[type="submit"].button.bare{
 }
 
 strong{
-    font-family:"Roboto Slab" !important;
     font-weight:900;
 }
 
 .left-float{
     float:left;
 }
-
 .right-float{
     float:right;
 }
+.center-align{text-align: center}
+
 
 .tiny,
 .information,

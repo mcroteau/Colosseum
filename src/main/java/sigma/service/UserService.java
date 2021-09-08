@@ -130,7 +130,7 @@ public class UserService {
             return "[redirect]/signup";
         }
 
-        User existingUser = userRepo.getByUsername(username);
+        User existingUser = userRepo.get(username);
         if(existingUser != null){
             responseData.put("message", "User exists with same username.");
             return "[redirect]/signup";
@@ -157,8 +157,8 @@ public class UserService {
             user.setDateJoined(Sigma.getDate());
             userRepo.save(user);
 
-            User savedUser = userRepo.getByUsername(user.getUsername());
-            Role defaultRole = roleRepo.find(Sigma.PUPIL_ROLE);
+            User savedUser = userRepo.get(user.getUsername());
+            Role defaultRole = roleRepo.find(Sigma.SCHOLAR_ROLE);
 
             userRepo.saveUserRole(savedUser.getId(), defaultRole.getId());
             String permission = getPermission(Long.toString(savedUser.getId()));
@@ -186,7 +186,7 @@ public class UserService {
 
         try {
             String username = req.getParameter("username");
-            User user = userRepo.getByUsername(username);
+            User user = userRepo.get(username);
             if (user == null) {
                 responseData.put("message", "Unable to find user.");
                 return ("[redirect]/user/reset");

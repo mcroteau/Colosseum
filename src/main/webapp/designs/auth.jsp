@@ -1,6 +1,6 @@
 <html>
 <head>
-    <title>Okay! : Http Website Monitoring</title>
+    <title>E=mc² Auditorium! : A colosseum based approach to learning.</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
